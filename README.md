@@ -1,5 +1,4 @@
-[README.md](https://github.com/user-attachments/files/33415554/README.md)
-# Email to WP
+[README (1).md](https://github.com/user-attachments/files/33415607/README.1.md)# Email to WP
 
 An AI automation that turns emailed event flyers and seasonal program guides into WordPress drafts.
 
@@ -53,6 +52,9 @@ Post titles are often rewritten for SEO, so "Choir Practices" in a guide may be 
 **Google Apps Script instead of a Node server.**
 The organization already runs on Google Workspace. Apps Script runs on Google's servers for free, has built-in Gmail access and scheduled triggers, and stays inside the organization's account, so a successor can take it over without any hosting. The trade-off is weaker tooling: no TypeScript, no npm packages, and a 6-minute execution limit.
 
+**Polling every 5 minutes instead of push notifications.**
+Gmail push (Gmail API `watch()` + Google Cloud Pub/Sub) would be more event-driven, but it needs a Cloud project, a public endpoint, and a watch renewal every 7 days. Requests arrive only a few times a month, so that overhead is not worth it here. Polling is kept cheap: when there is no new email, a run makes one Gmail search and exits in about a second, with no AI or WordPress calls. That is 288 short runs a day, about 5 minutes of total runtime, at no cost. A delay of up to 5 minutes is well within what event posting needs. If volume grew, switching to push would only change how `processRequests` is triggered.
+
 **Email notifications instead of Slack.**
 The office works in email, not chat. Notifications go where people already look. Sending is isolated in a single `notify()` function, so switching to Slack or another channel only touches one place.
 
@@ -102,3 +104,4 @@ Time saved per post: **to be measured** against the 15 to 25 minute manual basel
 - Configuration (addresses, term IDs, contact info) should move into a single config file.
 - AI output should be validated against a schema before posting.
 - Compare Gemini and Claude on the same test set for accuracy, cost, and speed.
+
