@@ -6,7 +6,7 @@ A church office sends event information in whatever format is handy: a poster PD
 
 ## The problem
 
-Every new program on the website used to be entered by hand: title, description, dates, time, location, cost, category, and frequency. That took **15 to 25 minutes per post**, and a single seasonal guide can contain 20+ programs.
+Every new program on the website used to be entered by hand: title, description, dates, time, location, cost, category, and frequency. That took **20 to 30 minutes per post**, and a single seasonal guide can contain 20+ programs.
 
 The office staff are not technical, so asking them to fill in a form or a spreadsheet was not an option. The tool had to accept information exactly the way they already send it.
 
