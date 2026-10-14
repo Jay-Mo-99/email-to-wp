@@ -1,4 +1,4 @@
-[README (1).md](https://github.com/user-attachments/files/33415607/README.1.md)# Email to WP
+# Email to WP
 
 An AI automation that turns emailed event flyers and seasonal program guides into WordPress drafts.
 
